@@ -1,21 +1,5 @@
-# Template for FrontLoops [Elements] challenge
+# Input slider
 
-Install all dependencies
-```bash
-npm i
-```
-
-For start watching all files use:
-```bash
-npm run start
-```
-
-then open in browser
-```bash
-http://localhost:1234/
-```
-
-For build all files use:
-```bash
-npm run build
-```
+Build an input slider component which you can drag to change displayed value.
+Should also store its value in a real input to be able to use that in forms.
+Slider bar should be clickable to move handle there.

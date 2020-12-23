@@ -1,12 +1,97 @@
 // Default
 
+:root {
+  --thumbSize: 12px;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
   margin: 0;
+  background-color: rgb(242,167,133);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+@mixin thums {
+  height: var(--thumbSize);
+  width:  var(--thumbSize);
+  border: 1px solid #333;
+  border-radius: 50%;
+  background-color: white;
+  appearance: none;
+  cursor: pointer;
+}
+
 // App
+.block {
+  padding: 25px;
+  width: 100%;
+  max-width: 450px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  border: 1px solid #dedede;
+}
+
+.slider {
+  --bgSize: 2px;
+
+  &__value {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #313131;
+  }
+
+  &__item {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: var(--bgSize);
+      width: calc(100% - var(--thumbSize));
+      border-radius: 1px;
+      background-color: #ddd;
+      background-image:
+        linear-gradient(#333, #333);
+      background-position: left center;
+      background-size: var(--value, 0) var(--bgSize);
+      background-repeat: no-repeat;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+      z-index: -1;
+    }
+  }
+
+  &__handler {
+    position: relative;
+    display: block;
+    width: 200px;
+    margin: 0;
+    background-color: transparent;
+    appearance: none;
+    outline: none;
+    z-index: 10;
+
+    &::-webkit-slider-thumb {
+      @include thums;
+    }
+
+    &::-moz-range-thumb {
+      @include thums;
+    }
+
+    &::-ms-thumb {
+      @include thums;
+    }
+
+  }
+}
